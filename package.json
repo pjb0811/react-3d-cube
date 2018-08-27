@@ -1,7 +1,7 @@
 {
   "name": "react-3d-cube",
-  "version": "1.0.1",
-  "description": "",
+  "version": "1.0.2",
+  "description": "cube app using react & react-motion.",
   "author": "pjb0811",
   "license": "MIT",
   "repository": "pjb0811/react-3d-cube",

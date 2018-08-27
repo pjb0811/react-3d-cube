@@ -12,6 +12,8 @@ npm install --save react-3d-cube
 
 ## Usage
 
+[demo](https://codesandbox.io/s/ojvpllm87q)
+
 ```tsx
 import * as React from 'react';
 
