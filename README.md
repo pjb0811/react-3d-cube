@@ -1,6 +1,6 @@
 # react-3d-cube
 
->
+> cube app using react &amp; react-motion.
 
 [![NPM](https://img.shields.io/npm/v/react-3d-cube.svg)](https://www.npmjs.com/package/react-3d-cube) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
