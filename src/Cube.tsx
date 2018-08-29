@@ -141,7 +141,6 @@ class Cube extends React.Component<Props, State> {
 
   componentDidMount() {
     const { children } = this.props;
-    console.log(children);
     const { index, cube, faces } = this.state;
     const newChildren = children
       ? Array.isArray(children)
