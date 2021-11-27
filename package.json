@@ -32,11 +32,16 @@
     "react-motion": "^0.5.2"
   },
   "peerDependencies": {
-    "prop-types": "^15.5.4",
-    "react": "^15.0.0 || ^16.0.0",
-    "react-dom": "^15.0.0 || ^16.0.0"
+    "babel-eslint": "^10.1.0",
+    "prop-types": "^15.x",
+    "react": "^16.8.x || ^17.x",
+    "react-dom": "^16.8.x || ^17.x"
   },
   "devDependencies": {
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@rollup/plugin-url": "^6.1.0",
     "@types/jest": "27.0.3",
     "@types/react": "17.0.35",
     "@types/react-dom": "17.0.11",
@@ -48,13 +53,9 @@
     "react-dom": "17.0.2",
     "react-scripts-ts": "4.0.3",
     "rollup": "2.60.1",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-peer-deps-external": "2.2.4",
     "rollup-plugin-postcss-modules": "2.0.2",
     "rollup-plugin-typescript2": "0.31.1",
-    "rollup-plugin-url": "^1.4.0",
     "typescript": "4.5.2"
   },
   "files": [
