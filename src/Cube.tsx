@@ -177,6 +177,11 @@ export const Cube: FunctionComponent<Props> = ({
       newChildren.push(emptyFace);
     }
 
+    state.cube.rotateX = faces[index].rotate.x ? -faces[index].rotate.deg : 0;
+    state.cube.rotateY = faces[index].rotate.y ? -faces[index].rotate.deg : 0;
+    state.cube.rotateZ = 0;
+    state.children = newChildren;
+
     setState({
       ...state,
       cube: {
