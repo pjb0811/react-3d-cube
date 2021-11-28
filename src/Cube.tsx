@@ -291,31 +291,35 @@ export const Cube: FunctionComponent<Props> = ({
                 const { translate, rotate } = state.faces[face as Side];
 
                 return (
-                  <div
-                    className={`${styles.cubeFace} ${styles[face as Side]}`}
-                    key={key}
-                    style={{
-                      transform: `translate3d(${translate.x}px, ${translate.y}px, ${translate.z}px) rotate3d(${rotate.x}, ${rotate.y}, ${rotate.z}, ${rotate.deg}deg)`,
-                      width: state.cube.width,
-                      height: state.cube.height
-                    }}
-                    onMouseDown={e => {
-                      handleMouseDown(
-                        e as React.MouseEvent<HTMLDivElement, MouseEvent>
-                      );
-                    }}
-                    onMouseMove={e => {
-                      handleMouseMove(e);
-                    }}
-                    onMouseLeave={() => {
-                      handleMouseUp();
-                    }}
-                    onMouseUp={() => {
-                      handleMouseUp();
-                    }}
-                  >
-                    {state.children[key]}
-                  </div>
+                  <>
+                    {state.children.length > 0 && (
+                      <div
+                        className={`${styles.cubeFace} ${styles[face as Side]}`}
+                        key={key}
+                        style={{
+                          transform: `translate3d(${translate.x}px, ${translate.y}px, ${translate.z}px) rotate3d(${rotate.x}, ${rotate.y}, ${rotate.z}, ${rotate.deg}deg)`,
+                          width: state.cube.width,
+                          height: state.cube.height
+                        }}
+                        onMouseDown={e => {
+                          handleMouseDown(
+                            e as React.MouseEvent<HTMLDivElement, MouseEvent>
+                          );
+                        }}
+                        onMouseMove={e => {
+                          handleMouseMove(e);
+                        }}
+                        onMouseLeave={() => {
+                          handleMouseUp();
+                        }}
+                        onMouseUp={() => {
+                          handleMouseUp();
+                        }}
+                      >
+                        {state.children[key]}
+                      </div>
+                    )}
+                  </>
                 );
               })}
             </div>
