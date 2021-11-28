@@ -5,13 +5,29 @@ import styles from "./cube.css";
 
 const emptyFace = <div className={styles.empty}>empty</div>;
 
+type Side = "front" | "right" | "back" | "left" | "top" | "bottom";
+
+type FaceParams = {
+  translate: {
+    x: number;
+    y: number;
+    z: number;
+  };
+  rotate: {
+    x: number;
+    y: number;
+    z: number;
+    deg: number;
+  };
+};
+
 type Props = {
-  index: "front" | "right" | "back" | "left" | "top" | "bottom";
+  index: Side;
   size: number;
 };
 
 type State = {
-  index: string;
+  index: Side;
   isMoved: boolean;
   isPressed: boolean;
   mouseXY: Array<number>;
@@ -29,7 +45,14 @@ type State = {
     rotateY: number;
     rotateZ: number;
   };
-  faces: {};
+  faces: {
+    front: FaceParams;
+    right: FaceParams;
+    back: FaceParams;
+    left: FaceParams;
+    top: FaceParams;
+    bottom: FaceParams;
+  };
   children: Array<React.ReactNode>;
 };
 
@@ -188,6 +211,10 @@ export const Cube: FunctionComponent<Props> = ({
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const { pageX, pageY } = e;
 
+    state.isPressed = true;
+    state.isMoved = false;
+    state.mouseXY = [pageX, pageY];
+
     setState({
       ...state,
       isPressed: true,
@@ -206,6 +233,10 @@ export const Cube: FunctionComponent<Props> = ({
     } = state;
 
     if (isPressed) {
+      state.mouseXY = [pageX, pageY];
+      state.mouseDelta = [pageX - mx, pageY - my];
+      state.isMoved = true;
+
       setState({
         ...state,
         mouseXY: [pageX, pageY],
@@ -221,6 +252,10 @@ export const Cube: FunctionComponent<Props> = ({
     const { isPressed } = state;
 
     if (isPressed) {
+      state.isPressed = false;
+      state.mouseXY = [0, 0];
+      state.mouseDelta = [0, 0];
+
       setState({
         ...state,
         isPressed: false,
@@ -248,11 +283,11 @@ export const Cube: FunctionComponent<Props> = ({
               }}
             >
               {Object.keys(state.faces).map((face, key) => {
-                const { translate, rotate } = state.faces[face];
+                const { translate, rotate } = state.faces[face as Side];
 
                 return (
                   <div
-                    className={`${styles.cubeFace} ${styles[face]}`}
+                    className={`${styles.cubeFace} ${styles[face as Side]}`}
                     key={key}
                     style={{
                       transform: `translate3d(${translate.x}px, ${translate.y}px, ${translate.z}px) rotate3d(${rotate.x}, ${rotate.y}, ${rotate.z}, ${rotate.deg}deg)`,
@@ -274,7 +309,7 @@ export const Cube: FunctionComponent<Props> = ({
                       handleMouseUp();
                     }}
                   >
-                    {children && children[key]}
+                    {state.children[key]}
                   </div>
                 );
               })}
