@@ -167,7 +167,7 @@ export const Cube: FunctionComponent<Props> = ({
 
   useEffect(() => {
     const { index, cube, faces } = state;
-    const newChildren = children
+    const newChildren: React.ReactNode[] = children
       ? Array.isArray(children)
         ? [...children].slice(0, 6)
         : [children]
@@ -180,7 +180,7 @@ export const Cube: FunctionComponent<Props> = ({
     state.cube.rotateX = faces[index].rotate.x ? -faces[index].rotate.deg : 0;
     state.cube.rotateY = faces[index].rotate.y ? -faces[index].rotate.deg : 0;
     state.cube.rotateZ = 0;
-    state.children = newChildren;
+    state.children = [...newChildren];
 
     setState({
       ...state,
@@ -190,7 +190,7 @@ export const Cube: FunctionComponent<Props> = ({
         rotateY: faces[index].rotate.y ? -faces[index].rotate.deg : 0,
         rotateZ: 0
       },
-      children: newChildren
+      children: [...newChildren]
     });
   }, []);
 
